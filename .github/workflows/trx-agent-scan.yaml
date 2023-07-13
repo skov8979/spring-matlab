@@ -1,0 +1,17 @@
+on:
+  push:
+   branches:
+    - 'main'
+    - 'master'
+  workflow_dispatch:
+jobs:
+  execute-scan-workflow:
+    uses: threatrix/threat-agent-scan/.github/workflows/scan-repo-reusable.yaml@master
+    with:
+      eid: 2f9aefbd-97a5-4706-b95a-af1846752905
+      oid: 8d92e4e4-39f3-42e6-b146-a06b4a81a776
+      app-name: spring-matlab
+      trx-host: https://stage.threatrix.io
+    secrets:
+      TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      THREATRIX_SERVER_API_KEY: ${{ secrets.THREATRIX_API_KEY }}
